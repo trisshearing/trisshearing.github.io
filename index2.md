@@ -14,4 +14,3 @@ _Hello **World**_
 
 [Profound](https://trisshearing.github.io/text.txt)
 
-![Tris and Bex](https://github.com/trisshearing/trisshearing.github.io/blob/master/IMG_7176.JPG)
