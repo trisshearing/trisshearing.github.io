@@ -1,6 +1,7 @@
 ---
-title: Test
+title: Home
 ---
 
-[Hello World](https://trisshearing.github.io/index2.html)
+<div align="center"> ## Programming for Geographical Information Analysts: Core Skills 
+Assignment 1
 
