@@ -1,3 +1,6 @@
+
+    
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,6 +24,13 @@ hr {
     border: 0px;
    }
 </style>
+<style>
+*.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em
+}
+</style>
 </head>
 <body>
 	
@@ -31,7 +41,7 @@ hr {
 
 <h4>Description</h4>
 	
-<p>This agent-based model randomly moves a user-defined number of agents ('sheep') a user-defined number of steps over a DEM raster environment,
+<p class="blocktext">This agent-based model randomly moves a user-defined number of agents ('sheep') a user-defined number of steps over a DEM raster environment,
 'eating' the environment at each step. The agents communicate their location and 'food' so they do not collide and have an equal share.
 The colour of the environment reflects the 'height' value of the land, which changes as it is consumed by the agents.</p>
 	
@@ -39,7 +49,7 @@ The colour of the environment reflects the 'height' value of the land, which cha
 <p>Use link below to download zip file, extract all to chosen folder.</p>
 
 <h4>Instructions</h4>
-<ol>
+<ol class="blocktext">
 <li>Run command prompt within folder, or navigate to the folder path.</li>
 <li>Enter "python model.py" into command prompt.</li>
 <li>Input required number of agents ("Sheep") and the number of steps each agent will make ("Mouthfuls").</li>
