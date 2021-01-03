@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>SRS</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script language="JavaScript" type="text/JavaScript" src="script.js"></script>
+	<script language="JavaScript" type="text/JavaScript" src="data.js"></script>
+
+</head>
+<!-- Initialise map, load schools layer-->
+<body onload="loadMap();school(); ">
+
+<h1>Safe Routes to Schools</h1>
+<h3 style="text-align: center;">Plan a healthy, safe and enjoyable route to your Dulwich school</h3>
+<hr>
+
+<!--Buttons to open modal and clear isochrone by reloading schools layer -->
+<div class="wrap">
+	<button id="modalButton" class="button" >How to use this map</button>
+	
+</div>
+<!--Modal element-->
+<!--Modal code adapted from https://www.w3schools.com/howto/howto_css_modals.asp-->
+<div id="myModal" class="modal">
+
+  <!--Modal content -->
+  <div class="modal-content">
+	<!--Close modal button-->
+    <span class="close">&times;</span>
+	<!--Modal Text-->
+	<h3 style="text-align: center;">A map to help families find safe routes to school on foot, bike, scooter or wheelchair</h3>
+	<hr>
+	<h4 style="text-align: center;">Layers</h4>
+	<img src="layers.png"  alt="Layers Icon" width="70px";height="70px;">
+	Use the menu on the right of the map to choose your backdrop. 
+	Greyscale is best for viewing the Routes and Restrictions overlays, Satellite gives an aerial view, Public Transport displays bus and rail connections.
+	<p>
+	<hr style="width:200px;">
+    <h4 style="text-align: center;">Schools</h4>
+	<img src="sch.png"  alt="School Icon" width="50px";height="50px;">
+	Start by finding your school on the map, hover over each school to see the name. 
+	Clicking on the school icon shows the approximate travel times to that school, hover over for detail. 
+	Click the icon again to remove. Only works for Dulwich Village Infants School in prototype. 
+	<hr style="width:200px;">
+	<h4 style="text-align: center;">Quiet routes</h4>
+	<img src="routes.png"  alt="Routes eg" width="100px";height="100px;"> 
+	In the menu on the right of the map, select "Routes" to display the colour overlays, classifying 
+	roads by traffic levels and suitability for active travel. These are based on experience of SRS members 
+	and not on any form of traffic monitoring. Hover over each route for more information.
+	<hr style="width:200px;">
+	<h4 style="text-align: center;">  Restrictions</h4>
+	<img src="noentry.png"  alt="No Entry Sign" width="60px";height="60px;"><img src="busgate.png"  alt="Bus Gate Sign" width="60px";height="60px;"> 
+	Select "Restrictions" to display measures to reduce traffic flow (<a target="_blank" href="https://en.wikipedia.org/wiki/Modal_filter">modal filters</a> and 
+	<a target="_blank" href="https://www.youtube.com/watch?v=Im0HBd2WFXA">bus gates</a>) 
+	including COVID-19 experimental traffic orders which may be subject to change, alongside more established features. 
+	Hover over the icon for more details, including times and direction of restrictions.</p>
+	<hr style="width:200px;">
+	<p style="text-align:center"> Please <a href="mailto:gy17t2s@leeds.ac.uk">get in touch</a> if you spot any errors; questions and suggestions are always welcome.</p>
+	<p style="text-align:right">&#169 Tristan Shearing, 2020</p>
+  </div>
+
+</div>
+
+<!--Main map element-->
+<div id="map"></div>
+
+
+<br>
+<p style="text-align:right">&#169 Tristan Shearing, 2020</p>
+ 
+</body>
+</html>
+   
+   
