@@ -1,7 +1,21 @@
 var map;
-var twenty;
-var ten;
+var alleynsISO;
+var bessemerISO;
+var dulwichISO;
+var hamletISO;
+var prepISO;
+var dvisISO;
+var woodISO;
+var herneISO;
+var jagsISO;
+var kerrISO;
+var kingsdaleISO;
+var oakfieldISO;
+var rosemeadISO;
+var rosendaleISO;
+var charterISO;
 var sch;
+var schoolsISO;
 
 //Initialise map
 function loadMap()	{
@@ -20,7 +34,7 @@ function loadMap()	{
 	
 	//Define center, zoom and style of map on load
 	map = L.map('map', {
-		center: [51.45297,-0.08568],
+		center: [51.449216,-0.085156],
 		zoom: 14,
 		layers: [greyscale]
 	});
@@ -33,23 +47,23 @@ function loadMap()	{
 	};
 	
 	//Modal
-	var modal = document.getElementById("myModal");
+	//var modal = document.getElementById("myModal");
 
 	//Button to open modal
-	var btn = document.getElementById("modalButton");
+	//var btn = document.getElementById("modalButton");
 
 	//Span element to close modal
-	var span = document.getElementsByClassName("close")[0];
+	//var span = document.getElementsByClassName("close")[0];
 
 	//Button function
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
+	//btn.onclick = function() {
+	  //modal.style.display = "block";
+	//}
 
 	//Close modal onclick 'x'
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
+	//span.onclick = function() {
+	  //modal.style.display = "none";
+	//}
 
 	//Close modal onclick ouside the modal
 	window.onclick = function(event) {
@@ -73,7 +87,7 @@ function loadMap()	{
 		div.innerHTML += '<svg height="20" width="25"><g fill="none" stroke="#55ff00" stroke-width="5"><path d="M5 20  l215 0" /></g></svg><span>  Pedestrians/cycles only</span><br>';
 		div.innerHTML += '<svg height="20" width="25"><g fill="none" stroke="#ffff00" stroke-width="5"><path d="M5 20 l215 0" /></g></svg><span>  Low-traffic/School Street</span><br>';
 		div.innerHTML += '<svg height="20" width="25"><g fill="none" stroke="#ffaa00" stroke-width="5"><path d="M5 20 l215 0" /></g></svg><span>  Timed low-traffic road</span><br>';
-		div.innerHTML += '<svg height="20" width="25"><g fill="none" stroke="#f01f0c" stroke-width="3"><path d="M5 20 l215 0" /></g></svg><span>  High traffic road</span><br>';
+		//div.innerHTML += '<svg height="20" width="25"><g fill="none" stroke="#f01f0c" stroke-width="3"><path d="M5 20 l215 0" /></g></svg><span>  High traffic road</span><br>';
 		return div;
 	};
 	legend.addTo(map);
@@ -103,11 +117,11 @@ function loadMap()	{
 					weight:5,
 					opacity: 0.5
 				};
-				case 5: return {
-					color:"#f01f0c", 
-					weight:3,
-					opacity: 0.5
-				};
+				//case 5: return {
+					//color:"#f01f0c", 
+					//weight:3,
+					//opacity: 0.5
+				//};
 				default: return {color: "#000000"};
 			}
 		},
@@ -144,50 +158,206 @@ function loadMap()	{
 			"Restrictions": res
 		};	
 	
-	//Add layer control, not collapsed for easy visibility
-	L.control.layers(baseLayers, features,{collapsed: false}).addTo(map); 
+	//Add layer control
+	L.control.layers(baseLayers, features,{collapsed: true}).addTo(map); 
 }
 
 
 
 function school (){
 	//Style isochrones and icon
-	var tenMin = {
+	var iso = {
 		color: 'none',
 		fillColor: '#f788f1',
 		fillOpacity: 0.2,
 	};
-	var twentyMin = {
-		color: 'none',
-		fillColor: '#f59df0',
-		fillOpacity: 0.2,
-	};
+
 	var schoolIcon = L.icon({
 		iconUrl:'sch.png',
 		iconSize: [15,15],
 	});	
 	
-	
-	var twenty = L.geoJSON(dvisTwenty, {style: twentyMin}).bindTooltip("Area within a 20 min walk or 10 min cycle", {sticky:true});
-	var ten = L.geoJSON(dvisTen, {style: tenMin}).bindTooltip("Area within a 10 min walk or 5 min cycle", {sticky:true});
-	
-	//Both isochrones into layerGroup
-	var isochrones = L.layerGroup([twenty, ten]);
 
-				
+	
+	var alleyns = L.geoJSON(alleynsISO, {style: iso}).bindTooltip(function (alleynsISO) {return alleynsISO.feature.properties.AA_METERS;}, {sticky:true});
+	var bessemer = L.geoJSON(bessemerISO, {style: iso}).bindTooltip(function (bessemerISO) {return bessemerISO.feature.properties.AA_METERS;}, {sticky:true});
+	var dulwich = L.geoJSON(dulwichISO, {style: iso}).bindTooltip(function (dulwichISO) {return dulwichISO.feature.properties.AA_METERS;}, {sticky:true});
+	var hamlet = L.geoJSON(hamletISO, {style: iso}).bindTooltip(function (hamletISO) {return hamletISO.feature.properties.AA_METERS;}, {sticky:true});
+	var prep = L.geoJSON(prepISO, {style: iso}).bindTooltip(function (prepISO) {return prepISO.feature.properties.AA_METERS;}, {sticky:true});
+	var dvis = L.geoJSON(dvisISO, {style: iso}).bindTooltip(function (dvisISO) {return dvisISO.feature.properties.AA_METERS;}, {sticky:true});
+	var charter = L.geoJSON(charterISO, {style: iso}).bindTooltip(function (charterISO) {return charterISO.feature.properties.AA_METERS;}, {sticky:true});
+	var wood = L.geoJSON(woodISO, {style: iso}).bindTooltip(function (woodISO) {return woodISO.feature.properties.AA_METERS;}, {sticky:true});
+	var herne = L.geoJSON(herneISO, {style: iso}).bindTooltip(function (herneISO) {return herneISO.feature.properties.AA_METERS;}, {sticky:true});
+	var jags = L.geoJSON(jagsISO, {style: iso}).bindTooltip(function (jagsISO) {return jagsISO.feature.properties.AA_METERS;}, {sticky:true});
+	var kerr = L.geoJSON(kerrISO, {style: iso}).bindTooltip(function (kerrISO) {return kerrISO.feature.properties.AA_METERS;}, {sticky:true});
+	var kingsdale = L.geoJSON(kingsdaleISO, {style: iso}).bindTooltip(function (kingsdaleISO) {return kingsdaleISO.feature.properties.AA_METERS;}, {sticky:true});
+	var oakfield = L.geoJSON(oakfieldISO, {style: iso}).bindTooltip(function (oakfieldISO) {return oakfieldISO.feature.properties.AA_METERS;}, {sticky:true});
+	var rosemead = L.geoJSON(rosemeadISO, {style: iso}).bindTooltip(function (rosemeadISO) {return rosemeadISO.feature.properties.AA_METERS;}, {sticky:true});
+	var rosendale = L.geoJSON(rosendaleISO, {style: iso}).bindTooltip(function (rosendaleISO) {return rosendaleISO.feature.properties.AA_METERS;}, {sticky:true});
+	var charter = L.geoJSON(charterISO, {style: iso}).bindTooltip(function (charterISO) {return charterISO.feature.properties.AA_METERS;}, {sticky:true});
+
+	
+	var schoolsISO = L.layerGroup([alleyns, bessemer, dulwich, hamlet, prep, dvis, charter, wood, herne, jags, kerr, kingsdale, oakfield, rosemead, rosendale, charter]);
+    
+    
 
 	L.geoJSON (schools,{
 		pointToLayer: function(feature, latlng){
+        		
 			//Add school markers 
-			return L.marker(latlng,{icon: schoolIcon}).addTo(map).on('click', function (e) { 
-				if (feature.properties.OBJECTID == 3 ){//Only available for one school currently
+			return L.marker(latlng,{icon: schoolIcon}).addTo(map).on('click', function (e) {
+    			
+                //if(map.hasLayer([alleyns, bessemer, dulwich, hamlet, prep, dvis, charter, wood, herne, jags, kerr, kingsdale, oakfield, rosemead, rosendale, charter])) {
+        			//map.removeLayer([alleyns, bessemer, dulwich, hamlet, prep, dvis, charter, wood, herne, jags, kerr, kingsdale, oakfield, rosemead, rosendale, charter]);
+            	//}	
+            	
+    			if (feature.properties.SCHOOL_NAM == "Alleyn's School" ){
+    				if(map.hasLayer(alleyns)) {
+            			map.removeLayer(alleyns);
+                	}	
+            	    else {
+                    	map.addLayer(alleyns);
+            		}			
+    			    			
+        		}	
+				if (feature.properties.SCHOOL_NAM == "Bessemer Grange Primary School" ){
 					//Remove isochrones if already present
-					if(map.hasLayer(isochrones)) {
-						map.removeLayer(isochrones);
+					if(map.hasLayer(bessemer)) {
+						map.removeLayer(bessemer);
 					}
 					//Add isochrones
 					else {
-						map.addLayer(isochrones); 
+						map.addLayer(bessemer); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Dulwich College" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(dulwich)) {
+						map.removeLayer(dulwich);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(dulwich); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Dulwich Hamlet Junior School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(hamlet)) {
+						map.removeLayer(hamlet);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(hamlet); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Dulwich Prep London" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(prep)) {
+						map.removeLayer(prep);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(prep); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Dulwich Village Church of England Infants' School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(dvis)) {
+						map.removeLayer(dvis);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(dvis); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Dulwich Wood Primary School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(wood)) {
+						map.removeLayer(wood);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(wood); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Herne Hill School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(herne)) {
+						map.removeLayer(herne);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(herne); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "James Allen's Girls' School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(jags)) {
+						map.removeLayer(jags);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(jags); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Judith Kerr Primary School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(kerr)) {
+						map.removeLayer(kerr);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(kerr); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Kingsdale Foundation School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(kingsdale)) {
+						map.removeLayer(kingsdale);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(kingsdale); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Oakfield Preparatory School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(oakfield)) {
+						map.removeLayer(oakfield);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(oakfield); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Rosemead Preparatory School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(rosemead)) {
+						map.removeLayer(rosemead);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(rosemead); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "Rosendale Primary School" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(rosendale)) {
+						map.removeLayer(rosendale);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(rosendale); 
+					}
+				}
+				if (feature.properties.SCHOOL_NAM == "The Charter School North Dulwich" ){
+					//Remove isochrones if already present
+					if(map.hasLayer(charter)) {
+						map.removeLayer(charter);
+					}
+					//Add isochrones
+					else {
+						map.addLayer(charter); 
 					}
 				}
 			});
